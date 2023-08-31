@@ -332,17 +332,15 @@ TrelloPowerUp.initialize({
   },
   'card-buttons': function(t, options) {
     return [{
-      // usually you will provide a callback function to be run on button click
-      // we recommend that you use a popup on click generally
-      icon: GRAY_ICON, // don't use a colored icon here
-      text: 'Open Popup',
-      callback: cardButtonCallback
-    }, {
-      // but of course, you could also just kick off to a url if that's your thing
-      icon: GRAY_ICON,
-      text: 'Just a URL',
-      url: 'https://developers.trello.com',
-      target: 'Trello Developer Site' // optional target for above url
+      icon: './path_to_icon.png', // Path to the icon for your button
+      text: 'Log Time', // Text that appears on the button
+      callback: function(t) {
+        return t.popup({
+          title: "Log Time",
+          url: './path_to_html_file.html', // This should be an HTML file where you define the form for time input
+          height: 184 // Height of the popup in pixels
+        });
+      }
     }];
   },
   'card-detail-badges': function(t, options) {
